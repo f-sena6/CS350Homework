@@ -33,17 +33,32 @@ def main():
      
     responses = ['I want to build the wall', 'But we have some bad hombres here', 'We need the wall', 'No puppet. You are the puppet', 'One of my first acts will be to get all of the drug lords.', 'We are getting the drugs, they are getting the cash', 'They are coming in illegally', 'Drugs are pouring in through the border', 'They have been deported', 'We are a country of laws']
 
-    responses2 = ['I find that just astonishing', 'We will not have open borders', 'Well, that is because he would rather have a puppet as president of the United States', 'I dont want to be sending families away from children', 'We are both a nation of immigrants and we are a nation of laws and that we can act accordingly', 'I am introducing comprehensive immigration reform within the first 100 days with a path to citizenship', 'It is pretty clear you wont admit that the Russians have engaged in cyber attacks against the US.', 'I find that deeply disturbing', 'I am not quoting myself', 'We have tried that']
+    responses2 = ['We will not have open borders', 'I find that just astonishing', 'Well, that is because he would rather have a puppet as president of the United States', 'I dont want to be sending families away from children', 'We are both a nation of immigrants and we are a nation of laws and that we can act accordingly', 'I am introducing comprehensive immigration reform within the first 100 days with a path to citizenship', 'It is pretty clear you wont admit that the Russians have engaged in cyber attacks against the US.', 'I find that deeply disturbing', 'I am not quoting myself', 'We have tried that']
 
 
     while True:
-      text = raw_input("Please ask Hilary and Donald a Question: ")
+
+
       donald = Talker('Donald Trump', responses) #name is donald, vocab is responses (or array)
-      clinton = Talker('Hilary Clinton', responses2) #name is clinton, vocab is responses
+      clinton = Talker('Hillary Clinton', responses2) #name is clinton, vocab is responses
+
+      choice = int(raw_input("Would you like to ask Hillary or Donald a Question?\nEnter 1 for Hillary, 2 for Donald: "))
       print "\n"
-      print donald.getname(), "responds, ", donald.getvocab(text)
-      print clinton.getname(),"responds, ", clinton.getvocab(text)
-      print "\n"
+      if choice == 1:
+        text = raw_input("Please ask Hillary Clinton a Question: ")
+        print "\n"
+        print clinton.getname(),"responds, ", clinton.getvocab(text)
+        print "\n"
+
+      elif choice == 2:
+        text = raw_input("Please ask Donald Trump a Question: ")
+        print "\n"
+        print donald.getname(), "responds, ", donald.getvocab(text)
+        print "\n"
+
+      else:
+        print "Incorrect answer. Please try again."
+        break
 
       ask = raw_input("Would you like to ask another question? Please type yes or no: ")
       yes = hash('yes')
@@ -64,18 +79,4 @@ if __name__ == '__main__':
     main()
 
 
-
-
-"""
-
-
-            
-else:
-  l = (hash(text) % len(self.vocab))
-  return self.vocab[l]
-
-
-
-
-"""
 
